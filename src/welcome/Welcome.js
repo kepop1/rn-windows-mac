@@ -5,20 +5,27 @@ import { ROUTE_MAIN } from '../navigation/constants'
 import { Button, Core, Font } from '../lib'
 
 export const Welcome = ({ setRoute }) => (
-  <View style={styles.container}>
-    <Text style={styles.header}>RN-Windows-Mac</Text>
-    <Text style={styles.text}>
-      React Native for Windows and Mac - strange world!
-    </Text>
+  <View style={styles.screen}>
+    <View style={styles.body}>
+      <Text style={styles.header}>RN-Windows-Mac</Text>
+      <Text style={styles.text}>
+        React Native for Windows and Mac - strange world!
+      </Text>
+    </View>
 
     <Button onPress={() => setRoute(ROUTE_MAIN)} label="Go to main page" />
   </View>
 )
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
+    flex: 1,
     padding: Core.unit,
     backgroundColor: 'white'
+  },
+  body: {
+    flex: 1,
+    justifyContent: 'center'
   },
   header: {
     ...Font.sizes.heading,

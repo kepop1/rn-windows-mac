@@ -33,4 +33,6 @@ console.warn(Dimensions.get('window').width)
 
 Returns my actual screen height and width - This was with 'SafeAreaView' ... interesting View returns the height of the box
 
+Nevermind - it's just weird between re-renders
+
 > I guess this means you have to think about styling much more like you do with the web (could be any size screen so always have adaptable styles, no shortcuts)

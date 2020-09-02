@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, View, StyleSheet, Dimensions } from 'react-native'
+import { Text, SafeAreaView, StyleSheet } from 'react-native'
 import { Provider } from 'react-redux'
 import store from './store'
 import { Welcome } from './welcome/Welcome'
@@ -27,21 +27,16 @@ const MakeshiftRouter = ({ route, setRoute }) => {
 export default () => {
   const [route, setRoute] = useState(ROUTE_WELCOME)
 
-  console.warn(Dimensions.get('window').height)
-  console.warn(Dimensions.get('window').width)
-
   return (
     <Provider store={store}>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <MakeshiftRouter route={route} setRoute={setRoute} />
-      </View>
+      </SafeAreaView>
     </Provider>
   )
 }
 const styles = StyleSheet.create({
   container: {
-    height: 764,
-    flex: 1,
-    minHeight: 764
+    flex: 1
   }
 })
