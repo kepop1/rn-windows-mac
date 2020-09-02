@@ -1,9 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
-import { Core, Font } from '../lib'
+import { Core, Font, TextButton } from '../lib'
+import { ROUTE_WELCOME } from '../navigation/constants'
 
-export const Main = () => {
+export const Main = ({ setRoute }) => {
   const user = useSelector(state => state.login.user)
   return (
     <View style={styles.container}>
@@ -14,6 +15,8 @@ export const Main = () => {
         Who knows maybe this will be a fancy menu or dashboard someday! {'\n'}
       </Text>
       <Text style={styles.italicText}>User Object: {JSON.stringify(user)}</Text>
+
+      <TextButton onPress={() => setRoute(ROUTE_WELCOME)} label="Go back" />
     </View>
   )
 }

@@ -25,3 +25,12 @@ Backing out the changes for React Navigation caused a mess, if the react-native-
 Thankfully we should be good to go.
 
 I wonder what happens with fonts and assets?
+
+iOS Keybindings don't really work, you right click in the emulator and select reload. that was strange.
+
+console.warn(Dimensions.get('window').height)
+console.warn(Dimensions.get('window').width)
+
+Returns my actual screen height and width - This was with 'SafeAreaView' ... interesting View returns the height of the box
+
+> I guess this means you have to think about styling much more like you do with the web (could be any size screen so always have adaptable styles, no shortcuts)

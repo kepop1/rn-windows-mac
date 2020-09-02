@@ -1,31 +1,24 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 
-import { ROUTE_LOGIN, ROUTE_REGISTER } from '../navigation/constants'
-import { Button, TextButton, Core, Font } from '../lib'
+import { ROUTE_MAIN } from '../navigation/constants'
+import { Button, Core, Font } from '../lib'
 
-export const Welcome = ({ navigation }) => (
+export const Welcome = ({ setRoute }) => (
   <View style={styles.container}>
-    <Text style={styles.header}>React-Native-Starter App</Text>
+    <Text style={styles.header}>RN-Windows-Mac</Text>
     <Text style={styles.text}>
-      This app will give you some different things out the box. It might seem a
-      little barebones or OTT but give it a while and even make it your own!
+      React Native for Windows and Mac - strange world!
     </Text>
 
-    <Button
-      onPress={() => navigation.navigate(ROUTE_REGISTER)}
-      label="Register"
-    />
-    <TextButton
-      onPress={() => navigation.navigate(ROUTE_LOGIN)}
-      label="Already have an account? Login!"
-    />
+    <Button onPress={() => setRoute(ROUTE_MAIN)} label="Go to main page" />
   </View>
 )
 
 const styles = StyleSheet.create({
   container: {
-    padding: Core.unit
+    padding: Core.unit,
+    backgroundColor: 'white'
   },
   header: {
     ...Font.sizes.heading,
