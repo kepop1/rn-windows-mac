@@ -36,3 +36,13 @@ Returns my actual screen height and width - This was with 'SafeAreaView' ... int
 Nevermind - it's just weird between re-renders
 
 > I guess this means you have to think about styling much more like you do with the web (could be any size screen so always have adaptable styles, no shortcuts)
+
+We'll use the brewdog PunkAPI, which is serving all the information from a punk ipa book
+
+https://api.punkapi.com/v2/beers?page=5&per_page=80
+
+That's 325 beers.
+
+It's much less red screeny that iOS and Android - the 'helper' window seems to avoid that dissapointing "Oh yeah it failed and broke a lot"
+
+Gotta treat the styles much like you do on a website and figure out how to handle them dynamically
