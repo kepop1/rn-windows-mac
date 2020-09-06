@@ -3,8 +3,8 @@ import { Text, SafeAreaView, StyleSheet } from 'react-native'
 import { Provider } from 'react-redux'
 import store from './store'
 import { Welcome } from './welcome/Welcome'
-import { Main } from './main/Main'
-import { ROUTE_WELCOME, ROUTE_MAIN } from './navigation/constants'
+import { ROUTE_WELCOME, ROUTE_BEER_DETAILS } from './navigation/constants'
+import { BeerDetails } from './BeerDetails/BeerDetails'
 
 //This disables any of the Text from scaling according to the OS settings for text.
 //This is not a good idea long term and should be addressed!
@@ -14,13 +14,20 @@ Text.defaultProps = {
 }
 
 const MakeshiftRouter = ({ route, setRoute }) => {
+  const [params, setParams] = useState(null)
+
+  const navigate = (selectedRoute, routeParams) => {
+    setRoute(selectedRoute)
+    setParams(routeParams)
+  }
+
   switch (route) {
     case ROUTE_WELCOME:
-      return <Welcome setRoute={setRoute} />
-    case ROUTE_MAIN:
-      return <Main setRoute={setRoute} />
+      return <Welcome navigate={navigate} params={params} />
+    case ROUTE_BEER_DETAILS:
+      return <BeerDetails navigate={navigate} params={params} />
     default:
-      return <Welcome setRoute={setRoute} />
+      return <Welcome navigate={navigate} params={params} />
   }
 }
 

@@ -6,14 +6,14 @@ import {
   Text,
   FlatList,
   ScrollView,
-  ActivityIndicator,
-  Image
+  ActivityIndicator
 } from 'react-native'
 
-// import { ROUTE_MAIN } from '../navigation/constants'
 import { Button, Core, Font } from '../lib'
+import { BeerItem } from './BeerItem'
+import { ROUTE_BEER_DETAILS } from '../navigation/constants'
 
-export const Welcome = ({ setRoute }) => {
+export const Welcome = ({ navigate }) => {
   const [data, setData] = useState([])
   const [page, setPage] = useState(1)
 
@@ -33,90 +33,13 @@ export const Welcome = ({ setRoute }) => {
     getData()
   }, [page])
 
+  const pages = [1, 2, 3, 4, 5]
+
   const renderItem = ({ item }) => (
-    <View
-      style={{
-        flex: 0.5,
-        flexDirection: 'row',
-        backgroundColor: '#38393b',
-        padding: Core.unit,
-        margin: Core.unit,
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      {item.image_url ? (
-        <Image
-          source={{ uri: item.image_url }}
-          style={{ height: 200, width: 200 }}
-          resizeMode="contain"
-        />
-      ) : (
-        <View
-          style={{
-            height: 200,
-            width: 200,
-            padding: Core.unit,
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <Text
-            style={{
-              ...Font.family.openSansBold,
-              marginBottom: Core.unit / 3,
-              color: 'white',
-              textAlign: 'center',
-              fontSize: 22
-            }}
-          >
-            404 {'\n'}Missing Image
-          </Text>
-        </View>
-      )}
-      <View style={{ flex: 1 }}>
-        <Text
-          style={{
-            ...Font.family.openSansBold,
-            marginBottom: Core.unit / 3,
-            color: 'white',
-            fontSize: 26
-          }}
-        >
-          {item.id}. {item.name} - {item.first_brewed}
-        </Text>
-        <Text
-          style={{
-            ...Font.family.openSansItalic,
-            marginBottom: Core.unit / 3,
-            color: 'white',
-            fontSize: 22
-          }}
-        >
-          {item.tagline}
-        </Text>
-        <Text
-          style={{
-            ...Font.family.openSansRegular,
-            marginBottom: Core.unit / 3,
-            color: 'white',
-            fontSize: 18
-          }}
-        >
-          ABV: {item.abv} - IBU: {item.ibu}
-        </Text>
-        <Text
-          style={{
-            ...Font.family.openSansRegular,
-            marginBottom: Core.unit / 3,
-            color: 'white',
-            fontSize: 18
-          }}
-        >
-          Food pairing: {item.food_pairing.map(food => `${food}, `)}
-        </Text>
-      </View>
-    </View>
+    <BeerItem
+      item={item}
+      onPress={() => navigate(ROUTE_BEER_DETAILS, { item })}
+    />
   )
 
   return (
@@ -128,31 +51,13 @@ export const Welcome = ({ setRoute }) => {
       </Text>
 
       <View style={styles.pageButtonContainer}>
-        <Button
-          onPress={() => setPage(1)}
-          label="1"
-          styleOverride={{ backgroundColor: 'aqua' }}
-        />
-        <Button
-          onPress={() => setPage(2)}
-          label="2"
-          styleOverride={{ backgroundColor: 'aqua' }}
-        />
-        <Button
-          onPress={() => setPage(3)}
-          label="3"
-          styleOverride={{ backgroundColor: 'aqua' }}
-        />
-        <Button
-          onPress={() => setPage(4)}
-          label="4"
-          styleOverride={{ backgroundColor: 'aqua' }}
-        />
-        <Button
-          onPress={() => setPage(5)}
-          label="5"
-          styleOverride={{ backgroundColor: 'aqua' }}
-        />
+        {pages.map(pageNumber => (
+          <Button
+            key={pageNumber}
+            onPress={() => setPage(pageNumber)}
+            label={pageNumber}
+          />
+        ))}
       </View>
 
       {data.length !== 0 ? (
@@ -161,7 +66,6 @@ export const Welcome = ({ setRoute }) => {
           numColumns={2}
           renderItem={renderItem}
           keyExtractor={item => item.id}
-          // contentContainerStyle={{ flex: 1, backgroundColor: 'black' }}
         />
       ) : (
         <ActivityIndicator size="large" />
