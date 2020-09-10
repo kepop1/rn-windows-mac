@@ -5,7 +5,8 @@ const unit = 15
 const color = {
   goldCrayola: '#EFC69B',
   vividBurgundy: '#AF1B3F',
-  cyberGrape: '#4B3F72'
+  cyberGrape: '#4B3F72',
+  brewdogBlue: '#1AB3C7'
 }
 
 export const Core = { unit, color }

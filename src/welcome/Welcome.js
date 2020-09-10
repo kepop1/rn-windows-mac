@@ -38,7 +38,7 @@ export const Welcome = ({ navigate }) => {
   const renderItem = ({ item }) => (
     <BeerItem
       item={item}
-      onPress={() => navigate(ROUTE_BEER_DETAILS, { item })}
+      onPress={() => navigate(ROUTE_BEER_DETAILS, { beer: item })}
     />
   )
 

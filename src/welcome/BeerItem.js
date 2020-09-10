@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import { Core, Font } from '../lib'
 
-const MissingBeerImage = () => (
+export const MissingBeerImage = () => (
   <View style={styles.missingBeerContainer}>
     <Text style={styles.missingBeerText}>404 {'\n'}Missing Image</Text>
   </View>
@@ -31,7 +31,7 @@ export const BeerItem = ({ item, onPress }) => {
             ABV: {item.abv} - IBU: {item.ibu}
           </Text>
           <Text style={styles.beerInfoText}>
-            Food pairing: {item.food_pairing.map(food => `${food}, `)}
+            Food pairing: {item.food_pairing.join(', ')}
           </Text>
         </View>
       </>

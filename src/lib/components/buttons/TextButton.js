@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   textButton: {
     ...Font.sizes.body,
     ...Font.family.openSansBold,
-    color: 'lime',
+    color: 'white',
     paddingVertical: Core.unit / 2,
     paddingHorizontal: Core.unit * 4,
     alignSelf: 'center',

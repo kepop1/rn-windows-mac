@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   button: {
-    backgroundColor: 'lime',
+    backgroundColor: Core.color.brewdogBlue,
     paddingVertical: Core.unit / 2,
     paddingHorizontal: Core.unit * 4,
     alignSelf: 'center',
