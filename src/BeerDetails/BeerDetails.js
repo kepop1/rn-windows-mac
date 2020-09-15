@@ -34,11 +34,24 @@ export const BeerDetails = ({ navigate, params }) => {
           <View style={styles.verticalSeparator} />
 
           <View style={styles.beerInfoHalf}>
+            <Text style={styles.beerInfoBold}>First Brewed: </Text>
             <Text style={styles.beerInfoText}>{beerDetails.first_brewed}</Text>
-            <Text style={styles.beerInfoText}>ABV {beerDetails.abv}</Text>
-            <Text style={styles.beerInfoText}>IBU {beerDetails.ibu}</Text>
+
+            <View style={styles.spacer} />
+
             <Text style={styles.beerInfoText}>
-              Food pairing: {beerDetails.food_pairing.join(', ')}
+              <Text style={styles.beerInfoBold}>ABV: </Text>
+              {beerDetails.abv}
+            </Text>
+            <Text style={styles.beerInfoText}>
+              <Text style={styles.beerInfoBold}>IBU: </Text> {beerDetails.ibu}
+            </Text>
+
+            <View style={styles.spacer} />
+
+            <Text style={styles.beerInfoBold}>Food Pairings: </Text>
+            <Text style={styles.beerInfoText}>
+              {beerDetails.food_pairing.join(', ')}
             </Text>
           </View>
         </View>
@@ -57,23 +70,30 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'black',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: Core.unit * 4
   },
   beerDetails: {
+    width: '100%',
+    height: '100%',
     backgroundColor: 'darkgrey',
     alignItems: 'center',
+    justifyContent: 'center',
     paddingVertical: Core.unit * 2,
     paddingHorizontal: Core.unit * 2,
-    margin: Core.unit
+    borderRadius: 5
   },
   beerInfo: {
+    width: '100%',
+    justifyContent: 'center',
     flexDirection: 'row',
     marginTop: Core.unit
   },
   beerInfoHalf: {
-    flex: 1,
+    flex: 0.4,
     alignItems: 'center',
-    paddingHorizontal: Core.unit,
+    justifyContent: 'center',
+    padding: Core.unit,
     backgroundColor: '#38393b',
     borderRadius: 3
   },
@@ -93,10 +113,23 @@ const styles = StyleSheet.create({
     ...Font.family.openSansRegular,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'center'
+  },
+  beerInfoBold: {
+    ...Font.family.openSansBold,
+    marginBottom: Core.unit / 3,
+    color: 'white',
+    fontSize: 22
   },
   image: { height: 350, width: 350 },
   verticalSeparator: {
     width: StyleSheet.hairlineWidth
+  },
+  spacer: {
+    height: 2,
+    width: '60%',
+    backgroundColor: 'white',
+    marginVertical: Core.unit
   }
 })

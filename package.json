@@ -6,11 +6,13 @@
     "android": "react-native run-android --variant devDebug --appIdSuffix=dev",
     "ios": "react-native run-ios",
     "macos": "react-native run-macos",
+    "windows": "react-native run-windows",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint --ext .js ./src",
     "packager": "env watchman watch-del-all && npm start -- --reset-cache",
-    "packager:macos": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos"
+    "packager:macos": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos",
+    "packager:windows": "react-native start -- --use-react-native-windows"
   },
   "dependencies": {
     "@react-navigation/native": "^5.0.9",
@@ -23,7 +25,8 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "yup": "^0.28.3"
+    "yup": "^0.28.3",
+    "react-native-windows": "^0.61.0-0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",
