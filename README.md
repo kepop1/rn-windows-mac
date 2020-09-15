@@ -79,3 +79,5 @@ Mac uses the metro.config.macos.js file, however react-native-windows is going t
 Fonts linked in the assets/ section in the react-native.config.js are straight up ignored, so chances are they need to be linked at a Visual Studio solution level that controls the actual APP emulator/simulator.
 
 All things considered though it runs pretty quick!
+
+Funnily enough moving it to another screen seems to cause issues ...
