@@ -6,7 +6,8 @@ import {
   Text,
   FlatList,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  Platform
 } from 'react-native'
 
 import { Button, Core, Font } from '../lib'
@@ -44,10 +45,9 @@ export const Welcome = ({ navigate }) => {
 
   return (
     <ScrollView contentContainerStyle={styles.screen}>
-      <Text style={styles.header}>BrewDog Punk API</Text>
-      <Text style={styles.header}>
-        A showcase of React Native for Windows and Mac through BrewDogs beer
-        catalogue
+      <Text style={styles.header}>A Brewdog Beer List App</Text>
+      <Text style={styles.text}>
+        {"Drink responsibly. Don't drink and code!"}
       </Text>
 
       <View style={styles.pageButtonContainer}>
@@ -63,7 +63,9 @@ export const Welcome = ({ navigate }) => {
       {data.length !== 0 ? (
         <FlatList
           data={data}
-          numColumns={2}
+          numColumns={
+            Platform.OS === 'ios' || Platform.OS === 'android' ? 1 : 2
+          }
           renderItem={renderItem}
           keyExtractor={item => item.id}
         />
@@ -78,15 +80,26 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: 'black',
-    paddingVertical: Core.unit
+    //Safe Area View pushes iOS up from the bottom so it's not as jarring
+    paddingVertical:
+      Platform.OS === 'ios' || Platform.OS === 'android'
+        ? Core.unit / 2
+        : Core.unit * 2
   },
   header: {
     ...Font.sizes.heading,
     ...Font.family.openSansBold,
     textAlign: 'center',
     letterSpacing: 1,
-    marginBottom: Core.unit * 2,
+    marginBottom: Core.unit,
     color: 'white'
+  },
+  text: {
+    ...Font.family.openSansRegular,
+    marginBottom: Core.unit / 3,
+    color: 'white',
+    fontSize: 18,
+    textAlign: 'center'
   },
   pageButtonContainer: {
     flexDirection: 'row',

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Text, SafeAreaView, StyleSheet } from 'react-native'
+import { Text, View, SafeAreaView, StyleSheet, StatusBar } from 'react-native'
 import { Provider } from 'react-redux'
 import store from './store'
 import { Welcome } from './welcome/Welcome'
@@ -36,9 +36,12 @@ export default () => {
 
   return (
     <Provider store={store}>
-      <SafeAreaView style={styles.container}>
-        <MakeshiftRouter route={route} setRoute={setRoute} />
-      </SafeAreaView>
+      <StatusBar barStyle="light-content" />
+      <View style={{ flex: 1, backgroundColor: 'black' }}>
+        <SafeAreaView style={styles.container}>
+          <MakeshiftRouter route={route} setRoute={setRoute} />
+        </SafeAreaView>
+      </View>
     </Provider>
   )
 }

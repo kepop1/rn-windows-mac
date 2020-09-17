@@ -1,5 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet, Image } from 'react-native'
+import {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  Image,
+  Platform
+} from 'react-native'
 
 import { Core, Font, TextButton } from '../lib'
 import { ROUTE_WELCOME } from '../navigation/constants'
@@ -9,7 +16,7 @@ export const BeerDetails = ({ navigate, params }) => {
   const beerDetails = params.beer
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.beerDetails}>
         {beerDetails.image_url ? (
           <Image
@@ -31,7 +38,9 @@ export const BeerDetails = ({ navigate, params }) => {
             <Text style={styles.beerInfoText}>{beerDetails.description}</Text>
           </View>
 
-          <View style={styles.verticalSeparator} />
+          {Platform.OS !== 'ios' && Platform.OS !== 'android' ? (
+            <View style={styles.verticalSeparator} />
+          ) : null}
 
           <View style={styles.beerInfoHalf}>
             <Text style={styles.beerInfoBold}>First Brewed: </Text>
@@ -61,36 +70,47 @@ export const BeerDetails = ({ navigate, params }) => {
           label="Back to beer list"
         />
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: Platform.OS !== 'ios' && Platform.OS !== 'android' ? 1 : null,
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: Core.unit * 4
+    padding:
+      Platform.OS !== 'ios' && Platform.OS !== 'android'
+        ? Core.unit * 4
+        : Core.unit
   },
   beerDetails: {
-    width: '100%',
     height: '100%',
+    width: '100%',
     backgroundColor: 'darkgrey',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: Core.unit * 2,
-    paddingHorizontal: Core.unit * 2,
+    paddingVertical:
+      Platform.OS !== 'ios' && Platform.OS !== 'android'
+        ? Core.unit * 2
+        : Core.unit,
+    paddingHorizontal:
+      Platform.OS !== 'ios' && Platform.OS !== 'android'
+        ? Core.unit * 2
+        : Core.unit,
     borderRadius: 5
   },
   beerInfo: {
     width: '100%',
     justifyContent: 'center',
-    flexDirection: 'row',
+    flexDirection:
+      Platform.OS !== 'ios' && Platform.OS !== 'android' ? 'row' : null,
     marginTop: Core.unit
   },
   beerInfoHalf: {
-    flex: 0.4,
+    flex: Platform.OS !== 'ios' && Platform.OS !== 'android' ? 0.45 : null,
+    marginTop: Core.unit,
     alignItems: 'center',
     justifyContent: 'center',
     padding: Core.unit,
@@ -101,13 +121,15 @@ const styles = StyleSheet.create({
     ...Font.family.openSansBold,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 26
+    fontSize: 26,
+    textAlign: 'center'
   },
   beerInfoTagline: {
     ...Font.family.openSansItalic,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 22
+    fontSize: 22,
+    textAlign: 'center'
   },
   beerInfoText: {
     ...Font.family.openSansRegular,
@@ -120,7 +142,8 @@ const styles = StyleSheet.create({
     ...Font.family.openSansBold,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 22
+    fontSize: 22,
+    textAlign: 'center'
   },
   image: { height: 350, width: 350 },
   verticalSeparator: {

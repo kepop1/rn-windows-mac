@@ -10,8 +10,8 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint --ext .js ./src",
-    "packager": "env watchman watch-del-all && npm start -- --reset-cache",
-    "packager:macos": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos",
+    "packager": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos",
+    "packager:mobile": "env watchman watch-del-all && npm start -- --reset-cache",
     "packager:windows": "react-native start -- --use-react-native-windows"
   },
   "dependencies": {

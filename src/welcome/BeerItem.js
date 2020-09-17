@@ -1,5 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  Platform
+} from 'react-native'
 import { Core, Font } from '../lib'
 
 export const MissingBeerImage = () => (
@@ -27,12 +34,7 @@ export const BeerItem = ({ item, onPress }) => {
             {item.id}. {item.name} - {item.first_brewed}
           </Text>
           <Text style={styles.beerInfoTagline}>{item.tagline}</Text>
-          <Text style={styles.beerInfoText}>
-            ABV: {item.abv} - IBU: {item.ibu}
-          </Text>
-          <Text style={styles.beerInfoText}>
-            Food pairing: {item.food_pairing.join(', ')}
-          </Text>
+          <Text style={styles.beerInfoText}>ABV: {item.abv}%</Text>
         </View>
       </>
     </TouchableOpacity>
@@ -50,12 +52,14 @@ const styles = StyleSheet.create({
   missingBeerText: {},
   container: {
     flex: 0.5,
-    flexDirection: 'row',
     backgroundColor: '#38393b',
     padding: Core.unit,
     margin: Core.unit,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    flexDirection:
+      Platform.OS === 'ios' || Platform.OS === 'android' ? null : 'row',
+    borderRadius: 3
   },
   image: { height: 200, width: 200 },
   beerInfoContainer: { flex: 1 },
@@ -63,18 +67,21 @@ const styles = StyleSheet.create({
     ...Font.family.openSansBold,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 26
+    fontSize: 26,
+    textAlign: 'center'
   },
   beerInfoTagline: {
     ...Font.family.openSansItalic,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 22
+    fontSize: 22,
+    textAlign: 'center'
   },
   beerInfoText: {
     ...Font.family.openSansRegular,
     marginBottom: Core.unit / 3,
     color: 'white',
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'center'
   }
 })

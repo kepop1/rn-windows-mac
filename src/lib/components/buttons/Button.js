@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Core.color.brewdogBlue,
     paddingVertical: Core.unit / 2,
-    paddingHorizontal: Core.unit * 4,
+    paddingHorizontal: Core.unit,
     alignSelf: 'center',
     borderRadius: Core.unit * 2,
     marginTop: Core.unit * 2

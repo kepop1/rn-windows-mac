@@ -81,3 +81,4 @@ Fonts linked in the assets/ section in the react-native.config.js are straight u
 All things considered though it runs pretty quick!
 
 Funnily enough moving it to another screen seems to cause issues ...
+All runs on the same packager so there's no issues with bundling etc - perhaps it'll need a tweak for windows?
